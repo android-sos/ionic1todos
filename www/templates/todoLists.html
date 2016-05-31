@@ -1,0 +1,17 @@
+<ion-view view-title="Todo Lists">
+  <ion-content>
+    <ion-list class"animate-ripple" show-delete="false" can-swipe="true"  swipe-direction="both">
+      <ion-item nav-clear menu-close item="todo" 
+                      ng-repeat="todo in todos" 
+                      class="item-icon-right" >
+
+        <ion-checkbox ng-model="todo.completed" ng-click="todoComplete(todo)">{{todo.title}}
+        </ion-checkbox>
+        <a href="#/app/todoForm/{{todo.id}}">
+            <i class="icon ion-chevron-right"></i>  
+        </a>
+
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

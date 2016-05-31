@@ -1,0 +1,27 @@
+<ion-view view-title="Todo Sample">
+  <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-navicon" 
+          menu-toggle="left"></button>
+  </ion-nav-buttons>
+
+  <ion-content>
+      <div class="list">
+        <ion-toggle ng-model="todo.completed" checked="todo.completed" name="completed" toggle-class="toggle-positive">Complete</ion-toggle>
+
+        <label class="item item-input">
+          <span class="input-label">Title</span>
+          <input type="text" ng-model="todo.title">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Priority</span>
+          <input type="text" ng-model="todo.priority">
+        </label>
+        <button class="button button-block button-positive" ng-click="save()">
+         Save
+        </button>
+        <button class="button button-block button-assertive" ng-click="delete()">
+          Delete
+        </button>
+      </div>
+  </ion-content>
+</ion-view>
