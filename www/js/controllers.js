@@ -4,16 +4,49 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('TodolistsCtrl',['$scope','$ionicPopup', 'TodosService', function($scope, $ionicPopup, TodosService) {
+.controller('TodolistsCtrl',['$scope','$ionicPopup', '$ionicActionSheet', '$timeout','TodosService', function($scope, $ionicPopup, $ionicActionSheet,  $timeout, TodosService) {
+  
+  $scope.filterTodo = 0;
+
   $scope.todos = [];
   $scope.todos = TodosService.getTodos();
   console.log($scope.todos);
-  $scope.todoComplete = function (item){
+  $scope.todoComplete = function (item) {
     var alertPopup = $ionicPopup.alert({
       title: 'Todo Sample',
       template: 'Todo Complete: '+ item.title 
     });
   };
+
+
+   $scope.showFilter = function() {
+
+   // Show the action sheet
+   var hideSheet = $ionicActionSheet.show({
+     buttons: [
+       { text: 'All' },
+       { text: 'High' },
+       { text: 'Medium' },
+       { text: 'Low' },
+     ],
+     titleText: 'Filert by Priority',
+     cancelText: 'Cancel',
+     cancel: function() {
+          // add cancel code..
+        },
+     buttonClicked: function(index) {
+       $scope.filterTodo = index;
+       console.log($scope.filterTodo)
+     }
+   });
+
+   // For example's sake, hide the sheet after two seconds
+   $timeout(function() {
+     hideSheet();
+   }, 2000);
+
+ };
+
 }])
 
 .controller('TodoFormCtrl',['$scope', "$state", '$stateParams', '$ionicPopup', 'TodosService', function($scope, $state, $stateParams, $ionicPopup, TodosService) {
@@ -80,4 +113,21 @@ angular.module('starter.controllers', [])
         });
      }
   };
-}]);
+}])
+
+.filter('custom', function() {
+  return function(input, search) {
+    
+    if (!input) return input;
+    if (!search) return input;
+    var result = {}
+    angular.forEach(input, function(value, key) {
+      if (value.priority == search) {
+        result[key] = value;
+      }
+    });
+    return result;
+  }
+})
+
+;

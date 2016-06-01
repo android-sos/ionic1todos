@@ -1,8 +1,19 @@
 <ion-view view-title="Todo Lists">
+
+   <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" 
+            menu-toggle="left"></button>    
+   </ion-nav-buttons>
+   <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear" ng-click="showFilter()">
+            <i class="icon ion-plus-round"></i>
+        </button>
+    </ion-nav-buttons>
+
  <ion-content overflow-scroll="true" padding="true" class="has-header">
     <ion-list class"animate-ripple" show-delete="false" can-swipe="true"  swipe-direction="both">
       <ion-item nav-clear menu-close item="todo" 
-                      ng-repeat="todo in todos" 
+                      ng-repeat="todo in todos | custom:filterTodo" 
                       class="item-icon-right" >
 
         <ion-checkbox ng-model="todo.completed" ng-click="todoComplete(todo)">{{todo.title}}

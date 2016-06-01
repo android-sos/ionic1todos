@@ -26,7 +26,7 @@ angular.module('starter.services', [])
       {
         id: '4',
         title: 'Desarrollar los servicios para Traer data.',
-        priority: 2,
+        priority: 3,
         completed: true
       },
     ],

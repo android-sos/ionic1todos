@@ -7,8 +7,8 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.routes','starter.services'])
 
 .config(function($ionicConfigProvider, $urlRouterProvider, $httpProvider) {
-    $ionicConfigProvider.backButton.icon('ion-chevron-left');
-    $ionicConfigProvider.backButton.previousTitleText(false).text('&emsp;');
+    /*$ionicConfigProvider.backButton.icon('ion-chevron-left');
+    $ionicConfigProvider.backButton.previousTitleText(false).text('&emsp;');*/
     // Nuevo liena
     $ionicConfigProvider.scrolling.jsScrolling(false);
     //$httpProvider.interceptors.push('httpInterceptor');
